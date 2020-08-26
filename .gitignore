@@ -18,6 +18,7 @@ lib/
 lib64/
 parts/
 sdist/
+.vscode/
 var/
 wheels/
 pip-wheel-metadata/
@@ -127,3 +128,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Meto
+*.autosave
+*.autosave.*
+qml.*
+*.pyproject
+*.pyproject.*
+D
