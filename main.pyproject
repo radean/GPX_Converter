@@ -1,0 +1,3 @@
+{
+    "files": ["res/banner.png","main.py","main.qml","wn_About.qml", "ui.qml", "alerts.qml"]
+}

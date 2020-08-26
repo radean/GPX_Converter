@@ -132,7 +132,5 @@ dmypy.json
 # Meto
 *.autosave
 *.autosave.*
-qml.*
-*.pyproject
 *.pyproject.*
 D
