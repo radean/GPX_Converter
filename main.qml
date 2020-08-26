@@ -1,18 +1,17 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.1
-import QtQuick.Layouts 1.3
+import QtQuick 2.9
+import QtQuick.Controls 2.2
+import QtQuick.Layouts 1.2
 
 
 
 ApplicationWindow {
     id: mainWindow
-    title: qsTr("GPXConverter 1.1")
+    title: qsTr("GPXConverter 0.86 Beta")
     visible: true
     height: 442
     color: "#222222"
     width: 340
     objectName: "MainWindow"
-    
 
     Row {
         id: sectionInfo
@@ -32,7 +31,6 @@ ApplicationWindow {
             mirror: false
             mipmap: false
             cache: true
-            autoTransform: false
             asynchronous: false
             sourceSize.height: 0
             sourceSize.width: 340
@@ -86,7 +84,7 @@ ApplicationWindow {
             Connections {
                 target: tf_GPX_saveLocation
                 
-                function onClicked() {
+                onClicked: {
                     tf_GPX_saveLocation.text = "Clicked"
                 }
             }
@@ -107,9 +105,9 @@ ApplicationWindow {
            Connections {
                target: bt_GPX_Browse
 
-               function onClicked() {
-                   fileDialogOpener.FileOpener("GPX", "GPX Files (*.gpx )")
-               }
+                onClicked: {
+                    fileDialogOpener.FileOpener("GPX", "GPX Files (*.gpx )")
+                }
            }
         }
 
@@ -161,7 +159,7 @@ ApplicationWindow {
                     grabler.setScaleFactor(tf_ScaleFactor.text)
                 }
 
-                function onFocusChanged() {
+                onFocusChanged: {
                     // Sending the Var to Methods
                     grabler.setScaleFactor(tf_ScaleFactor.text)
                     //print("Hitted")
@@ -183,7 +181,7 @@ ApplicationWindow {
             Connections {
                 target: swc_InvertedSpline
 
-                function onClicked(isInvertedSpline) {
+                onClicked: {
                     if (swc_InvertedSpline.checked == true) {
                         grabler.setIsInvertedSpline(true)
                     } else {
@@ -240,7 +238,7 @@ ApplicationWindow {
             Connections {
                 target: tf_csv_saveLocation
 
-                function onCsvFileCaptured(directory) {
+                onCsvFileCaptured: {
                     tf_csv_saveLocation.text = directory
                 }
             }
@@ -262,9 +260,9 @@ ApplicationWindow {
            Connections {
                target: bt_CSV_Browse
 
-               function onClicked() {
-                   fileDialogOpener.FileOpener("CSV", "CSV Files (*.csv)")
-               }
+              onClicked: {
+                  fileDialogOpener.FileOpener("CSV", "CSV Files (*.csv)")
+              }
            }
         }
 
@@ -347,7 +345,7 @@ ApplicationWindow {
             Connections {
                 target: ex_About
                 
-                function onClicked() {
+                onClicked: {
                     grabler.openAbout(footmark, scaleFactor)
                 } 
             
@@ -369,7 +367,7 @@ ApplicationWindow {
            Connections {
                target: ex_Conversion
                 
-               function onClicked() {
+               onClicked: {
                    // Conversion Slot Mech
                    conversion.submittion();
                }
@@ -383,9 +381,10 @@ ApplicationWindow {
         target: grabler;
 
         // on progress bar changes
-        function onProgressChange (progress) {
+        onProgressChange: {
             progressBar.value = progress
         }
+
     }
 
     // Emitter File Dialog Opener
@@ -393,7 +392,7 @@ ApplicationWindow {
         target: fileDialogOpener
 
         // When EU Select a GPX File
-        function onGpxFileCaptured(directory) {
+        onGpxFileCaptured: {
             tf_GPX_saveLocation.text = directory
 
             if (directory) {
@@ -404,7 +403,7 @@ ApplicationWindow {
         }
 
         // When EU Select the save converted file location
-        function onCsvFileCaptured(directory) {
+        onCsvFileCaptured: {
             tf_csv_saveLocation.text = directory
 
             if (directory) {
@@ -417,7 +416,7 @@ ApplicationWindow {
 
     // Emitter DN Capture
     // GLOBAL VARIABLE
-    property string footmark: "Vishal bajaj, Feroz Ahmed"
+    property string footmark: "Credits: Vishal bajaj, Feroz Ahmed"
     property int scaleFactor: tf_ScaleFactor.text
 }
 
@@ -429,6 +428,6 @@ ApplicationWindow {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:2}
+    D{i:0;formeditorZoom:0.75}
 }
 ##^##*/

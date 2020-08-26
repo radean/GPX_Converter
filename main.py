@@ -1,21 +1,21 @@
 # This Python file uses the following encoding: utf-8
 import sys
-import os
+# import os
 
 
 import numpy 
 import gpxpy
-import pandas as pd
+from pandas import DataFrame as pd
+#import pandas as pd 
 import csv
 
 # GPX_Converter
 # from fbs_runtime.application_context.PyQt5 import ApplicationContext
 from gpx_converter import Converter
 from PyQt5.QtCore import QObject, pyqtSignal, pyqtSlot, QUrl
-# from PyQt5.QtGui import QGuiApplication
+from PyQt5.QtGui import QGuiApplication, QIcon
 from PyQt5.QtQml import QQmlApplicationEngine, qmlRegisterType
 from PyQt5.QtWidgets import QFileDialog, QApplication, QWidget
-
 
 class Grable(QWidget):
 
@@ -166,7 +166,7 @@ class Conversion(QObject):
     # Confinig the GPX File
     def gpxtranslate(self, input_file, serial="serialNumber", position_colname="position", tangentIn_colname="tanIn", tangentOut_colname="tanOut" ):
         # Arrays Manipulation
-        ser, position, tanIn, tanOut = [], [], [], []
+        ser, position= [], []
 
         latitude = 0
         longitude = 0
@@ -246,7 +246,7 @@ class Conversion(QObject):
         # Opening the file using native file handler
         csv_column = ["---", "Position", "InTangent", "OutTangent"]
 
-        my_df = pd.DataFrame(data)
+        my_df = pd(data)
 
         #Saving the file the macronizations
         try:
@@ -266,6 +266,7 @@ if __name__ == "__main__":
     # appctxt = ApplicationContext()
     app = QApplication(sys.argv)
     engine = QQmlApplicationEngine()
+    # engine = QMainWindow()
 
     grable = Grable()
 
@@ -275,6 +276,10 @@ if __name__ == "__main__":
     # Conversion Class 
     # For Converting the data into information
     conversion = Conversion()
+
+    # Setting up the Main APP Icon
+    app.setWindowIcon(QIcon('Icon.ico'))
+
 
     # modelClass.enlargeButton.connect(lambda textion: print(textion))
     engine.rootContext().setContextProperty('grabler', grable)
@@ -286,9 +291,10 @@ if __name__ == "__main__":
 
     # engine.load('./main.qml')
     engine.load(QUrl('main.qml'))
-    engine.load(QUrl("ui.qml"))
-    engine.load(QUrl("alerts.qml"))
+    engine.load(QUrl("./src/ui.qml"))
+    engine.load(QUrl("./src/alerts.qml"))
 
+    print ("Initialized")
     # context = engine.rootContext()
     # context.setContextProperty("textion", clipped)
 
