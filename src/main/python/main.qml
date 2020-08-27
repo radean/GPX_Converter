@@ -6,7 +6,7 @@ import QtQuick.Layouts 1.2
 
 ApplicationWindow {
     id: mainWindow
-    title: qsTr("GPXConverter 1.16 Alpha")
+    title: qsTr("GPXConverter 0.86 Beta")
     visible: true
     height: 442
     color: "#222222"

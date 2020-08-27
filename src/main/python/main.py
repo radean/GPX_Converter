@@ -14,7 +14,7 @@ from fbs_runtime.application_context.PyQt5 import ApplicationContext
 from gpx_converter import Converter
 from PyQt5.QtCore import QObject, pyqtSignal, pyqtSlot, QUrl
 # from PyQt5.QtGui import QGuiApplication, QIcon
-from PyQt5.QtQml import QQmlApplicationEngine
+from PyQt5.QtQml import QQmlApplicationEngine, qmlRegisterType
 from PyQt5.QtWidgets import QFileDialog, QApplication, QWidget
 
 class Grable(QWidget):
@@ -287,6 +287,7 @@ if __name__ == "__main__":
     engine.rootContext().setContextProperty('conversion', conversion)
     # clipped = "Clipped"
     # Registering the class for accessiblity from python
+    # qmlRegisterType(Grable, 'Grabling', 1, 0, 'Grable')
 
     # engine.load('./main.qml')
     engine.load(QUrl('main.qml'))
