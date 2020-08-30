@@ -6,7 +6,7 @@ import QtQuick.Layouts 1.2
 
 ApplicationWindow {
     id: mainWindow
-    title: qsTr("GPXConverter 1.16 Alpha")
+    title: qsTr("GPXConverter 1.17 Alpha")
     visible: true
     height: 442
     color: "#222222"
@@ -282,7 +282,7 @@ ApplicationWindow {
             id: infoText1
             width: 320
             color: "#ffffff"
-            text: qsTr("Note: Please try to use .gpx files from valid sources e.g. Strava, ridewithgps. Otherwise, the result might be malfunctional.")
+            text: qsTr("Note: Please try to use .gpx files from valid sources e.g. Strava, ridewithgps and the lenght of the .gpx format should'nt be more than 100KM. Otherwise, the result might be malfunctional.")
             minimumPointSize: 11
             minimumPixelSize: 11
             fontSizeMode: Text.HorizontalFit
@@ -296,7 +296,7 @@ ApplicationWindow {
             anchors.leftMargin: 10
             anchors.top: parent.top
             font.pixelSize: 12
-            anchors.topMargin: 10
+            anchors.topMargin: 0
         }
 
         Text {

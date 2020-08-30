@@ -10,10 +10,10 @@ from pandas import DataFrame as pd
 import csv
 
 # GPX_Converter
-from fbs_runtime.application_context.PyQt5 import ApplicationContext
+# from fbs_runtime.application_context.PyQt5 import ApplicationContext
 from gpx_converter import Converter
 from PyQt5.QtCore import QObject, pyqtSignal, pyqtSlot, QUrl
-# from PyQt5.QtGui import QGuiApplication, QIcon
+from PyQt5.QtGui import QGuiApplication, QIcon
 from PyQt5.QtQml import QQmlApplicationEngine
 from PyQt5.QtWidgets import QFileDialog, QApplication, QWidget
 
@@ -263,8 +263,8 @@ class Conversion(QObject):
 
 if __name__ == "__main__":
 
-    appctxt = ApplicationContext()
-    # app = QApplication(sys.argv)
+    # appctxt = ApplicationContext()
+    app = QApplication(sys.argv)
     engine = QQmlApplicationEngine()
     # engine = QMainWindow()
 
@@ -278,7 +278,7 @@ if __name__ == "__main__":
     conversion = Conversion()
 
     # Setting up the Main APP Icon
-    # appctxt.setWindowIcon(QIcon('Icon.ico'))
+    app.setWindowIcon(QIcon('./Icon.ico'))
 
 
     # modelClass.enlargeButton.connect(lambda textion: print(textion))
@@ -300,4 +300,4 @@ if __name__ == "__main__":
     if not engine.rootObjects():
         sys.exit(-1)
 
-    sys.exit(appctxt.app.exec_())
+    sys.exit(app.exec_())
